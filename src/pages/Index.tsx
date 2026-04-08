@@ -731,11 +731,11 @@ export default function Home() {
             </Section>
 
             <div className="print:hidden text-center py-8">
-              <Button onClick={() => window.print()}
+              <Button onClick={handleExportPDF} disabled={exporting}
                 className="gap-2 bg-gradient-to-r from-primary to-gold-dim hover:brightness-110 text-primary-foreground font-cinzel tracking-wider" size="lg">
-                <Download className="w-4 h-4" /> Download Full PDF Report
+                {exporting ? <><Loader2 className="w-4 h-4 animate-spin" /> Generating PDF... {exportPct}%</> : <><Download className="w-4 h-4" /> Download Full PDF Report</>}
               </Button>
-              <p className="text-xs text-muted-foreground mt-2">Use browser print → Save as PDF</p>
+              {exporting && <div className="w-64 mx-auto mt-3 h-1.5 bg-muted rounded-full overflow-hidden"><div className="h-full bg-primary rounded-full transition-all duration-300" style={{ width: `${exportPct}%` }} /></div>}
             </div>
           </div>
         )}
