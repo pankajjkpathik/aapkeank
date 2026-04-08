@@ -217,7 +217,7 @@ export default function Home() {
             </div>
 
             {/* TABLE OF CONTENTS */}
-            <div className="mb-6 p-5 glass-gold rounded-2xl" style={{ pageBreakAfter: "always" }}>
+            <div data-pdf-section="toc" className="mb-6 p-5 glass-gold rounded-2xl" style={{ pageBreakAfter: "always" }}>
               <h2 className="font-cinzel font-bold text-sm text-primary mb-3 tracking-[0.15em]">✦ TABLE OF CONTENTS</h2>
               <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-muted-foreground">
                 {["Default Lo-Shu Grid", "Lo-Shu Grid", "Thought Plane", "Success Plane 1", "Mental Plane", "Will Plane", "Emotional Plane", "Outlook Action Plane", "Will Power Success 2 Plane", "Practical Plane", "Lucky & Unlucky Number", "Lucky & Unlucky Color", "Maha Dasha", "Missing Number", "Missing Number Remedies", "All Available Numbers", "Repetitive Numbers", "Number Analysis", "Bhagyank Number", "Moolank Number", "Chaldean Name Number", "Name Analysis", "Month Number", "Birth Year Number", "Sun Sign Western", "Sun Sign Eastern", "Vastu Grid", "Vastu Dasha As Per Missing Number", "Marriage & Relationship", "Finance Analysis", "Health Analysis", "Personal Year Number", "All Remedies"].map((t, i) => (
