@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   generateReport, PLANES, planePercent, planePresentStr,
@@ -12,9 +12,10 @@ import { FullGrid, MiniGrid } from "@/components/Grid";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Sparkles, Download, Star, Sun, Moon } from "lucide-react";
+import { Sparkles, Download, Star, Sun, Moon, Loader2 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
+import { exportReportPDF } from "@/lib/pdfExport";
 
 const PLANET_GRAD: Record<number, string> = {
   1: "from-yellow-500 to-orange-500", 2: "from-slate-400 to-blue-400", 3: "from-yellow-400 to-amber-500",
