@@ -10,7 +10,7 @@ interface SectionProps {
 
 export function Section({ no, title, colorClass, children, clientName }: SectionProps) {
   return (
-    <div className="report-page relative mb-6 print:mb-0 print:bg-white print:text-gray-900" style={{ pageBreakBefore: "always" }}>
+    <div data-pdf-section="section" className="report-page relative mb-6 print:mb-0 print:bg-white print:text-gray-900" style={{ pageBreakBefore: "always" }}>
       {/* Print header - client name left, Ank Darppan right */}
       <div className="hidden print:flex items-center justify-between border-b border-gray-300 pb-2 mb-4 px-2">
         <span className="font-cinzel text-[9pt] text-gray-500 tracking-wider">{clientName || ""}</span>

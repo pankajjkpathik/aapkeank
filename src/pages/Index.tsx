@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   generateReport, PLANES, planePercent, planePresentStr,
@@ -12,9 +12,10 @@ import { FullGrid, MiniGrid } from "@/components/Grid";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Sparkles, Download, Star, Sun, Moon } from "lucide-react";
+import { Sparkles, Download, Star, Sun, Moon, Loader2 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
+import { exportReportPDF } from "@/lib/pdfExport";
 
 const PLANET_GRAD: Record<number, string> = {
   1: "from-yellow-500 to-orange-500", 2: "from-slate-400 to-blue-400", 3: "from-yellow-400 to-amber-500",
@@ -59,6 +60,23 @@ export default function Home() {
   const [gender, setGender] = useState<Gender>("male");
   const [report, setReport] = useState<FullReport | null>(null);
   const [err, setErr] = useState("");
+  const [exporting, setExporting] = useState(false);
+  const [exportPct, setExportPct] = useState(0);
+  const reportRef = useRef<HTMLDivElement>(null);
+
+  async function handleExportPDF() {
+    if (!report || !reportRef.current) return;
+    setExporting(true);
+    setExportPct(0);
+    try {
+      const formattedDob = report.dob.split("-").reverse().join("/");
+      await exportReportPDF(reportRef.current, report.name, formattedDob, (pct) => setExportPct(pct));
+    } catch (e) {
+      console.error("PDF export failed:", e);
+    } finally {
+      setExporting(false);
+    }
+  }
 
   function generate() {
     if (!dob) { setErr("Please enter your date of birth."); return; }
@@ -94,9 +112,9 @@ export default function Home() {
             <span className="text-muted-foreground text-xs hidden sm:block">— Vedic Numerology</span>
           </div>
           {report && (
-            <Button size="sm" variant="outline" onClick={() => window.print()}
+            <Button size="sm" variant="outline" onClick={handleExportPDF} disabled={exporting}
               className="gap-1.5 border-primary/30 text-primary hover:bg-primary/10">
-              <Download className="w-3.5 h-3.5" /> PDF
+              {exporting ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> {exportPct}%</> : <><Download className="w-3.5 h-3.5" /> PDF</>}
             </Button>
           )}
         </div>
@@ -170,9 +188,9 @@ export default function Home() {
 
         {/* REPORT */}
         {report && (
-          <div id="rpt" className="space-y-0">
+          <div id="rpt" ref={reportRef} className="space-y-0">
             {/* COVER PAGE - Page 1 */}
-            <div className="cover-page relative rounded-3xl overflow-hidden mb-6 border border-primary/20 glow-gold-intense print:rounded-none print:border-0 print:mb-0" style={{ pageBreakAfter: "always" }}>
+            <div data-pdf-section="cover" className="cover-page relative rounded-3xl overflow-hidden mb-6 border border-primary/20 glow-gold-intense print:rounded-none print:border-0 print:mb-0" style={{ pageBreakAfter: "always" }}>
               <img src={heroBg} alt="Vedic Numerology" className="w-full h-64 sm:h-80 object-cover print:h-[40vh]" />
               <div className="bg-gradient-to-t from-card via-card/90 to-transparent p-8 flex flex-col items-center text-center print:from-white print:via-white print:bg-white">
                 <img src={ankLogo} alt="Ank Darppan Logo" className="w-24 h-24 mb-4" width={512} height={512} loading="lazy" />
@@ -199,7 +217,7 @@ export default function Home() {
             </div>
 
             {/* TABLE OF CONTENTS */}
-            <div className="mb-6 p-5 glass-gold rounded-2xl" style={{ pageBreakAfter: "always" }}>
+            <div data-pdf-section="toc" className="mb-6 p-5 glass-gold rounded-2xl" style={{ pageBreakAfter: "always" }}>
               <h2 className="font-cinzel font-bold text-sm text-primary mb-3 tracking-[0.15em]">✦ TABLE OF CONTENTS</h2>
               <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-muted-foreground">
                 {["Default Lo-Shu Grid", "Lo-Shu Grid", "Thought Plane", "Success Plane 1", "Mental Plane", "Will Plane", "Emotional Plane", "Outlook Action Plane", "Will Power Success 2 Plane", "Practical Plane", "Lucky & Unlucky Number", "Lucky & Unlucky Color", "Maha Dasha", "Missing Number", "Missing Number Remedies", "All Available Numbers", "Repetitive Numbers", "Number Analysis", "Bhagyank Number", "Moolank Number", "Chaldean Name Number", "Name Analysis", "Month Number", "Birth Year Number", "Sun Sign Western", "Sun Sign Eastern", "Vastu Grid", "Vastu Dasha As Per Missing Number", "Marriage & Relationship", "Finance Analysis", "Health Analysis", "Personal Year Number", "All Remedies"].map((t, i) => (
@@ -713,11 +731,11 @@ export default function Home() {
             </Section>
 
             <div className="print:hidden text-center py-8">
-              <Button onClick={() => window.print()}
+              <Button onClick={handleExportPDF} disabled={exporting}
                 className="gap-2 bg-gradient-to-r from-primary to-gold-dim hover:brightness-110 text-primary-foreground font-cinzel tracking-wider" size="lg">
-                <Download className="w-4 h-4" /> Download Full PDF Report
+                {exporting ? <><Loader2 className="w-4 h-4 animate-spin" /> Generating PDF... {exportPct}%</> : <><Download className="w-4 h-4" /> Download Full PDF Report</>}
               </Button>
-              <p className="text-xs text-muted-foreground mt-2">Use browser print → Save as PDF</p>
+              {exporting && <div className="w-64 mx-auto mt-3 h-1.5 bg-muted rounded-full overflow-hidden"><div className="h-full bg-primary rounded-full transition-all duration-300" style={{ width: `${exportPct}%` }} /></div>}
             </div>
           </div>
         )}

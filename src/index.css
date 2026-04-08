@@ -218,3 +218,40 @@
   .cover-page { page-break-after: always; }
   .cover-page img { max-height: 300px !important; }
 }
+
+/* PDF capture mode - applied temporarily during html2canvas export */
+.pdf-capture-mode,
+.pdf-capture-mode * {
+  color: #1a1a1a !important;
+}
+.pdf-capture-mode .text-muted-foreground { color: #4b5563 !important; }
+.pdf-capture-mode .text-primary { color: #92700a !important; }
+.pdf-capture-mode .text-foreground { color: #111827 !important; }
+.pdf-capture-mode .bg-card,
+.pdf-capture-mode .bg-card\/50,
+.pdf-capture-mode .glass,
+.pdf-capture-mode .glass-gold { background: white !important; }
+.pdf-capture-mode .bg-muted,
+.pdf-capture-mode .bg-muted\/20,
+.pdf-capture-mode .bg-muted\/30 { background: #f3f4f6 !important; }
+.pdf-capture-mode .border-border,
+.pdf-capture-mode .border-border\/30 { border-color: #d1d5db !important; }
+.pdf-capture-mode .glow-gold,
+.pdf-capture-mode .glow-gold-intense { box-shadow: none !important; }
+.pdf-capture-mode .bg-gradient-to-t { background: white !important; }
+.pdf-capture-mode .text-gradient-gold {
+  background: none !important;
+  -webkit-text-fill-color: #92700a !important;
+  color: #92700a !important;
+}
+.pdf-capture-mode .bg-section-amber,
+.pdf-capture-mode .bg-section-violet,
+.pdf-capture-mode .bg-section-emerald,
+.pdf-capture-mode .bg-section-blue,
+.pdf-capture-mode .bg-section-rose,
+.pdf-capture-mode .bg-section-cyan,
+.pdf-capture-mode .bg-section-orange { background: #fef3c7 !important; }
+.pdf-capture-mode .bg-primary\/10,
+.pdf-capture-mode .bg-primary\/20 { background: rgba(200, 160, 60, 0.15) !important; }
+.pdf-capture-mode .border-primary\/20,
+.pdf-capture-mode .border-primary\/30 { border-color: rgba(200, 160, 60, 0.3) !important; }
