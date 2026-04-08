@@ -218,13 +218,13 @@ export default function Home() {
             </div>
 
             {/* 1. DEFAULT LO-SHU GRID */}
-            <Section no={1} title="DEFAULT LO-SHU GRID" colorClass={SECTION_COLORS[0]} defaultOpen>
+            <Section no={1} title="DEFAULT LO-SHU GRID" colorClass={SECTION_COLORS[0]} clientName={report.name}>
               <p className="text-xs text-muted-foreground mb-3 text-center">Standard Lo Shu Grid showing positions of numbers 1–9</p>
               <FullGrid report={report} showDefault />
             </Section>
 
             {/* 2. LO-SHU GRID */}
-            <Section no={2} title="LO-SHU GRID" colorClass={SECTION_COLORS[1]} defaultOpen>
+            <Section no={2} title="LO-SHU GRID" colorClass={SECTION_COLORS[1]} clientName={report.name}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <FullGrid report={report} />
