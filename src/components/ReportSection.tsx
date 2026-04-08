@@ -10,16 +10,16 @@ interface SectionProps {
 
 export function Section({ no, title, colorClass, children, clientName }: SectionProps) {
   return (
-    <div className="report-page bg-white text-gray-900 relative" style={{ pageBreakBefore: "always" }}>
-      {/* Print header */}
-      <div className="report-header hidden print:flex items-center justify-between border-b border-gray-300 pb-2 mb-4">
-        <span className="font-cinzel text-xs text-gray-500 tracking-wider">{clientName || ""}</span>
-        <span className="font-cinzel text-xs text-primary/80 tracking-wider font-bold">Ank Darppan</span>
+    <div className="report-page relative mb-6 print:mb-0 print:bg-white print:text-gray-900" style={{ pageBreakBefore: "always" }}>
+      {/* Print header - client name left, Ank Darppan right */}
+      <div className="hidden print:flex items-center justify-between border-b border-gray-300 pb-2 mb-4 px-2">
+        <span className="font-cinzel text-[9pt] text-gray-500 tracking-wider">{clientName || ""}</span>
+        <span className="font-cinzel text-[9pt] text-amber-700 tracking-wider font-bold">Ank Darppan</span>
       </div>
 
       {/* Section title bar */}
-      <div className={`flex items-center gap-3 px-5 py-4 rounded-xl mb-4 ${colorClass}`}>
-        <span className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-xs font-bold text-primary font-cinzel shrink-0">
+      <div className={`flex items-center gap-3 px-5 py-4 rounded-xl mb-4 ${colorClass} print:rounded-none print:bg-amber-50 print:border print:border-amber-200`}>
+        <span className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-xs font-bold text-primary font-cinzel shrink-0 print:bg-amber-100 print:border-amber-300 print:text-amber-800">
           {no}
         </span>
         <span className="font-cinzel font-semibold text-sm tracking-wider text-foreground print:text-gray-800">
@@ -28,15 +28,15 @@ export function Section({ no, title, colorClass, children, clientName }: Section
       </div>
 
       {/* Content always visible */}
-      <div className="px-2 print:px-0">
+      <div className="px-2 print:px-1">
         {children}
       </div>
 
-      {/* Print footer */}
-      <div className="report-footer hidden print:flex items-center justify-between border-t border-gray-300 pt-2 mt-auto absolute bottom-0 left-0 right-0 px-4">
-        <span className="font-cinzel text-xs text-gray-500">Ank Darppan</span>
-        <span className="font-cinzel text-xs text-gray-500 font-semibold">Aapke Ank</span>
-        <span className="text-xs text-gray-500">Page <span className="page-number"></span></span>
+      {/* Print footer - Ank Darppan | Aapke Ank | Section no */}
+      <div className="hidden print:flex items-center justify-between border-t border-gray-300 pt-2 mt-8 px-2">
+        <span className="font-cinzel text-[8pt] text-gray-400">Ank Darppan</span>
+        <span className="font-cinzel text-[8pt] text-gray-500 font-semibold">Aapke Ank</span>
+        <span className="text-[8pt] text-gray-400">Section {no}</span>
       </div>
     </div>
   );
