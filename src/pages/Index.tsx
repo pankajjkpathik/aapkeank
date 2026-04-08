@@ -171,42 +171,35 @@ export default function Home() {
         {/* REPORT */}
         {report && (
           <div id="rpt" className="space-y-0">
-            {/* TITLE CARD */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-primary/20 via-card to-mystic/10 border border-primary/20 rounded-3xl p-8 mb-6 glow-gold-intense pdf-title-block"
-            >
-              <div className="text-center">
-                <div className="flex justify-center mb-3">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center animate-float">
-                    <Star className="w-6 h-6 text-primary" />
-                  </div>
+            {/* COVER PAGE - Page 1 */}
+            <div className="cover-page relative rounded-3xl overflow-hidden mb-6 border border-primary/20 glow-gold-intense print:rounded-none print:border-0 print:mb-0" style={{ pageBreakAfter: "always" }}>
+              <img src={heroBg} alt="Vedic Numerology" className="w-full h-64 sm:h-80 object-cover print:h-[40vh]" />
+              <div className="bg-gradient-to-t from-card via-card/90 to-transparent p-8 flex flex-col items-center text-center print:from-white print:via-white print:bg-white">
+                <img src={ankLogo} alt="Ank Darppan Logo" className="w-24 h-24 mb-4" width={512} height={512} loading="lazy" />
+                <p className="text-primary/60 font-cinzel text-xs tracking-[0.4em] mb-2 print:text-gray-500">VEDIC NUMEROLOGY REPORT</p>
+                <h1 className="font-cinzel text-3xl sm:text-4xl font-bold text-gradient-gold mb-2 print:text-gray-900">{report.name}</h1>
+                <p className="text-muted-foreground text-sm mb-6 print:text-gray-600">Date of Birth: {report.dob.split("-").reverse().join("-")}</p>
+                <div className="flex justify-center gap-6 flex-wrap mb-6">
+                  {[
+                    { l: "Moolank", v: report.moolank }, { l: "Bhagyank", v: report.bhagyank },
+                    { l: "Kua (M)", v: report.kuaMale }, { l: "Kua (F)", v: report.kuaFemale },
+                    { l: "Month", v: report.monthNum }, { l: "Year", v: report.yearNum }
+                  ].map(x => (
+                    <div key={x.l} className="text-center px-3">
+                      <div className="text-2xl font-cinzel font-bold text-primary w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto print:border-gray-300 print:text-gray-800">{x.v}</div>
+                      <div className="text-xs text-muted-foreground mt-1.5 font-cinzel tracking-wider print:text-gray-500">{x.l}</div>
+                    </div>
+                  ))}
                 </div>
-                <p className="text-primary/60 font-cinzel text-xs tracking-[0.4em] mb-1">VEDIC NUMEROLOGY REPORT</p>
-                <h1 className="font-cinzel text-3xl font-bold text-gradient-gold mb-1">{report.name}</h1>
-                <p className="text-muted-foreground text-sm">Date of Birth: {report.dob.split("-").reverse().join("-")}</p>
+                <div className="border-t border-border/30 pt-4 print:border-gray-300">
+                  <p className="font-cinzel text-lg font-bold text-primary tracking-[0.2em] print:text-gray-800">Ank Darppan</p>
+                  <p className="text-xs text-muted-foreground font-cinzel tracking-wider print:text-gray-500">Aapke Ank</p>
+                </div>
               </div>
-              <div className="flex justify-center gap-6 mt-6 flex-wrap">
-                {[
-                  { l: "Moolank", v: report.moolank }, { l: "Bhagyank", v: report.bhagyank },
-                  { l: "Kua (M)", v: report.kuaMale }, { l: "Kua (F)", v: report.kuaFemale },
-                  { l: "Month", v: report.monthNum }, { l: "Year", v: report.yearNum }
-                ].map(x => (
-                  <motion.div key={x.l} className="text-center px-3"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}>
-                    <div className="text-3xl font-cinzel font-bold text-primary animate-pulse-glow inline-block w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">{x.v}</div>
-                    <div className="text-xs text-muted-foreground mt-1.5 font-cinzel tracking-wider">{x.l}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            </div>
 
             {/* TABLE OF CONTENTS */}
-            <div className="mb-6 p-5 glass-gold rounded-2xl pdf-toc">
+            <div className="mb-6 p-5 glass-gold rounded-2xl" style={{ pageBreakAfter: "always" }}>
               <h2 className="font-cinzel font-bold text-sm text-primary mb-3 tracking-[0.15em]">✦ TABLE OF CONTENTS</h2>
               <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-muted-foreground">
                 {["Default Lo-Shu Grid", "Lo-Shu Grid", "Thought Plane", "Success Plane 1", "Mental Plane", "Will Plane", "Emotional Plane", "Outlook Action Plane", "Will Power Success 2 Plane", "Practical Plane", "Lucky & Unlucky Number", "Lucky & Unlucky Color", "Maha Dasha", "Missing Number", "Missing Number Remedies", "All Available Numbers", "Repetitive Numbers", "Number Analysis", "Bhagyank Number", "Moolank Number", "Chaldean Name Number", "Name Analysis", "Month Number", "Birth Year Number", "Sun Sign Western", "Sun Sign Eastern", "Vastu Grid", "Vastu Dasha As Per Missing Number", "Marriage & Relationship", "Finance Analysis", "Health Analysis", "Personal Year Number", "All Remedies"].map((t, i) => (
@@ -217,6 +210,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
+
 
             {/* 1. DEFAULT LO-SHU GRID */}
             <Section no={1} title="DEFAULT LO-SHU GRID" colorClass={SECTION_COLORS[0]} clientName={report.name}>
