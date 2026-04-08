@@ -188,9 +188,9 @@ export default function Home() {
 
         {/* REPORT */}
         {report && (
-          <div id="rpt" className="space-y-0">
+          <div id="rpt" ref={reportRef} className="space-y-0">
             {/* COVER PAGE - Page 1 */}
-            <div className="cover-page relative rounded-3xl overflow-hidden mb-6 border border-primary/20 glow-gold-intense print:rounded-none print:border-0 print:mb-0" style={{ pageBreakAfter: "always" }}>
+            <div data-pdf-section="cover" className="cover-page relative rounded-3xl overflow-hidden mb-6 border border-primary/20 glow-gold-intense print:rounded-none print:border-0 print:mb-0" style={{ pageBreakAfter: "always" }}>
               <img src={heroBg} alt="Vedic Numerology" className="w-full h-64 sm:h-80 object-cover print:h-[40vh]" />
               <div className="bg-gradient-to-t from-card via-card/90 to-transparent p-8 flex flex-col items-center text-center print:from-white print:via-white print:bg-white">
                 <img src={ankLogo} alt="Ank Darppan Logo" className="w-24 h-24 mb-4" width={512} height={512} loading="lazy" />
