@@ -112,9 +112,9 @@ export default function Home() {
             <span className="text-muted-foreground text-xs hidden sm:block">— Vedic Numerology</span>
           </div>
           {report && (
-            <Button size="sm" variant="outline" onClick={() => window.print()}
+            <Button size="sm" variant="outline" onClick={handleExportPDF} disabled={exporting}
               className="gap-1.5 border-primary/30 text-primary hover:bg-primary/10">
-              <Download className="w-3.5 h-3.5" /> PDF
+              {exporting ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> {exportPct}%</> : <><Download className="w-3.5 h-3.5" /> PDF</>}
             </Button>
           )}
         </div>
