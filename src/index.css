@@ -201,13 +201,11 @@
   header, footer, .print-hidden { display: none !important; }
   button:not(.print-keep) { display: none !important; }
   .animate-fade-in-up, .animate-pulse-glow, .animate-float { animation: none !important; }
-  @page { size: A4 portrait; margin: 14mm 12mm; }
+  @page { size: A4 portrait; margin: 12mm 10mm; }
   html, body { background: white !important; color: #1a1a1a !important; font-size: 11pt; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   .min-h-screen { min-height: auto !important; }
-  .report-page { page-break-before: always; background: white !important; color: #1a1a1a !important; padding: 0 !important; }
-  .report-header { display: flex !important; }
-  .report-footer { display: flex !important; position: fixed; bottom: 0; }
+  .report-page { page-break-before: always; background: white !important; color: #1a1a1a !important; padding: 8px !important; }
   .pdf-keep-together { break-inside: avoid !important; }
   .pdf-grid-block { break-inside: avoid !important; }
   .glass, .glass-gold { background: white !important; border-color: #e5e7eb !important; }
@@ -217,10 +215,6 @@
   .text-primary { color: #92700a !important; }
   .text-foreground { color: #111827 !important; }
   .border-border, .border-border\/30, .border-border\/50 { border-color: #e5e7eb !important; }
-
-  @page { 
-    @bottom-left { content: "Ank Darppan"; font-family: 'Cinzel', serif; font-size: 8pt; }
-    @bottom-center { content: "Aapke Ank"; font-family: 'Cinzel', serif; font-size: 8pt; }
-    @bottom-right { content: "Page " counter(page); font-size: 8pt; }
-  }
+  .cover-page { page-break-after: always; }
+  .cover-page img { max-height: 300px !important; }
 }
