@@ -322,7 +322,7 @@ export default function Home() {
                       <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${PLANET_GRAD[md.num]} text-foreground flex items-center justify-center font-cinzel font-bold shrink-0`}>{md.num}</div>
                       <div className="flex-1">
                         <div className="font-semibold text-foreground text-sm">{NUM_DATA[md.num]?.planet} Dasha — Number {md.num}</div>
-                        <div className="text-xs text-muted-foreground">Age {md.from}–{md.to} | {md.years} years</div>
+                        <div className="text-xs text-muted-foreground">{md.start}–{md.end} | {md.dur} years</div>
                       </div>
                     </div>
                   </div>
@@ -535,7 +535,7 @@ export default function Home() {
                     <p className="text-xs text-muted-foreground">{NUM_DATA[report.monthNum]?.title}</p>
                   </div>
                 </div>
-                <Bullet items={MONTH_DATA[report.monthNum]?.desc || []} />
+                <Bullet items={MONTH_DATA[report.monthNum]?.points || []} />
               </div>
             </Section>
 
@@ -549,7 +549,7 @@ export default function Home() {
                     <p className="text-xs text-muted-foreground">{NUM_DATA[report.yearNum]?.title}</p>
                   </div>
                 </div>
-                <Bullet items={YEAR_DATA[report.yearNum]?.desc || []} />
+                <Bullet items={YEAR_DATA[report.yearNum]?.points || []} />
               </div>
             </Section>
 
