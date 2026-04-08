@@ -60,6 +60,23 @@ export default function Home() {
   const [gender, setGender] = useState<Gender>("male");
   const [report, setReport] = useState<FullReport | null>(null);
   const [err, setErr] = useState("");
+  const [exporting, setExporting] = useState(false);
+  const [exportPct, setExportPct] = useState(0);
+  const reportRef = useRef<HTMLDivElement>(null);
+
+  async function handleExportPDF() {
+    if (!report || !reportRef.current) return;
+    setExporting(true);
+    setExportPct(0);
+    try {
+      const formattedDob = report.dob.split("-").reverse().join("/");
+      await exportReportPDF(reportRef.current, report.name, formattedDob, (pct) => setExportPct(pct));
+    } catch (e) {
+      console.error("PDF export failed:", e);
+    } finally {
+      setExporting(false);
+    }
+  }
 
   function generate() {
     if (!dob) { setErr("Please enter your date of birth."); return; }
