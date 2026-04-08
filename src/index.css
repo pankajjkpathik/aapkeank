@@ -199,15 +199,28 @@
 /* Print styles */
 @media print {
   header, footer, .print-hidden { display: none !important; }
-  button { display: none !important; }
-  .animate-fade-in-up { animation: none !important; }
+  button:not(.print-keep) { display: none !important; }
+  .animate-fade-in-up, .animate-pulse-glow, .animate-float { animation: none !important; }
   @page { size: A4 portrait; margin: 14mm 12mm; }
   html, body { background: white !important; color: #1a1a1a !important; font-size: 11pt; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   .min-h-screen { min-height: auto !important; }
-  .pdf-section { break-before: page !important; }
-  .pdf-section-header { display: flex !important; }
-  .pdf-section-body { display: block !important; padding: 12px !important; }
+  .report-page { page-break-before: always; background: white !important; color: #1a1a1a !important; padding: 0 !important; }
+  .report-header { display: flex !important; }
+  .report-footer { display: flex !important; position: fixed; bottom: 0; }
   .pdf-keep-together { break-inside: avoid !important; }
   .pdf-grid-block { break-inside: avoid !important; }
+  .glass, .glass-gold { background: white !important; border-color: #e5e7eb !important; }
+  .glow-gold, .glow-gold-intense, .glow-purple { box-shadow: none !important; }
+  .bg-card, .bg-card\/50, .bg-muted, .bg-muted\/20, .bg-muted\/30 { background: #f9fafb !important; }
+  .text-muted-foreground { color: #4b5563 !important; }
+  .text-primary { color: #92700a !important; }
+  .text-foreground { color: #111827 !important; }
+  .border-border, .border-border\/30, .border-border\/50 { border-color: #e5e7eb !important; }
+
+  @page { 
+    @bottom-left { content: "Ank Darppan"; font-family: 'Cinzel', serif; font-size: 8pt; }
+    @bottom-center { content: "Aapke Ank"; font-family: 'Cinzel', serif; font-size: 8pt; }
+    @bottom-right { content: "Page " counter(page); font-size: 8pt; }
+  }
 }
