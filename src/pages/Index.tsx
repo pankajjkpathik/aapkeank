@@ -260,7 +260,7 @@ export default function Home() {
               const c = PLANE_COLORS[p.key];
               const combo = p.presentStr;
               return (
-                <Section key={p.key} no={idx + 3} title={p.label} colorClass={SECTION_COLORS[idx + 2]}>
+                <Section key={p.key} no={idx + 3} title={p.label} colorClass={SECTION_COLORS[idx + 2]} clientName={report.name}>
                   <MiniGrid report={report} highlight={p.nums} />
                   <div className={`rounded-xl border p-4 mb-3 pdf-keep-together ${p.pct === 100 ? "bg-emerald-950/30 border-emerald-800/40" : p.pct === 0 ? "bg-red-950/30 border-red-800/40" : "bg-muted/20 border-border/30"}`}>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-2">
@@ -278,7 +278,7 @@ export default function Home() {
             })}
 
             {/* 11. LUCKY & UNLUCKY NUMBER */}
-            <Section no={11} title="LUCKY & UNLUCKY NUMBER" colorClass={SECTION_COLORS[10]}>
+            <Section no={11} title="LUCKY & UNLUCKY NUMBER" colorClass={SECTION_COLORS[10]} clientName={report.name}>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">Your Birthday number, life path number, month number, year number & Zodiac sign all play important roles in your life.</p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {[
@@ -297,7 +297,7 @@ export default function Home() {
             </Section>
 
             {/* 12. LUCKY & UNLUCKY COLOR */}
-            <Section no={12} title="LUCKY & UNLUCKY COLOR" colorClass={SECTION_COLORS[11]}>
+            <Section no={12} title="LUCKY & UNLUCKY COLOR" colorClass={SECTION_COLORS[11]} clientName={report.name}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40">
                   <div className="text-xs font-bold text-emerald-400 mb-2 uppercase tracking-wide">Lucky Colors</div>
@@ -313,7 +313,7 @@ export default function Home() {
             </Section>
 
             {/* 13. MAHA DASHA */}
-            <Section no={13} title="MAHA DASHA" colorClass={SECTION_COLORS[12]}>
+            <Section no={13} title="MAHA DASHA" colorClass={SECTION_COLORS[12]} clientName={report.name}>
               <p className="text-sm text-muted-foreground mb-4">Maha Dasha represents the planetary periods based on your birth star. Each planet rules a specific period influencing your life events.</p>
               <div className="space-y-2">
                 {report.mahaDasha.map((md, i) => (
@@ -331,7 +331,7 @@ export default function Home() {
             </Section>
 
             {/* 14. MISSING NUMBER */}
-            <Section no={14} title="MISSING NUMBER" colorClass={SECTION_COLORS[13]}>
+            <Section no={14} title="MISSING NUMBER" colorClass={SECTION_COLORS[13]} clientName={report.name}>
               {report.grid.missing.length === 0 ? (
                 <div className="p-4 bg-emerald-950/30 rounded-xl border border-emerald-800/40 text-center">
                   <p className="text-emerald-400 font-semibold">No missing numbers! Your grid is complete.</p>
@@ -355,7 +355,7 @@ export default function Home() {
             </Section>
 
             {/* 15. MISSING NUMBER REMEDIES */}
-            <Section no={15} title="MISSING NUMBER REMEDIES" colorClass={SECTION_COLORS[14]}>
+            <Section no={15} title="MISSING NUMBER REMEDIES" colorClass={SECTION_COLORS[14]} clientName={report.name}>
               {report.grid.missing.length === 0 ? (
                 <p className="text-emerald-400 text-center font-semibold">No missing numbers — no remedies needed!</p>
               ) : (
@@ -371,7 +371,7 @@ export default function Home() {
             </Section>
 
             {/* 16. ALL AVAILABLE NUMBERS */}
-            <Section no={16} title="ALL AVAILABLE NUMBERS" colorClass={SECTION_COLORS[15]}>
+            <Section no={16} title="ALL AVAILABLE NUMBERS" colorClass={SECTION_COLORS[15]} clientName={report.name}>
               <MiniGrid report={report} highlight={report.grid.present} />
               <p className="text-sm text-muted-foreground mb-3 text-center">All numbers present in your Lo Shu chart:</p>
               <div className="space-y-3">
@@ -398,7 +398,7 @@ export default function Home() {
 
             {/* 17. REPETITIVE NUMBERS */}
             {report.grid.repeated.length > 0 && (
-              <Section no={17} title="REPETITIVE NUMBERS" colorClass={SECTION_COLORS[16]}>
+              <Section no={17} title="REPETITIVE NUMBERS" colorClass={SECTION_COLORS[16]} clientName={report.name}>
                 <MiniGrid report={report} highlight={report.grid.repeated} />
                 <div className="space-y-3">
                   {report.grid.repeated.map(n => {
@@ -425,7 +425,7 @@ export default function Home() {
             )}
 
             {/* 18. NUMBER ANALYSIS */}
-            <Section no={18} title="NUMBER ANALYSIS" colorClass={SECTION_COLORS[17]}>
+            <Section no={18} title="NUMBER ANALYSIS" colorClass={SECTION_COLORS[17]} clientName={report.name}>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
                   <thead><tr className="bg-muted/30"><th className="text-left p-2.5 font-semibold text-primary/80 font-cinzel text-xs tracking-wider">Analysis</th><th className="text-right p-2.5 font-semibold text-primary/80 font-cinzel text-xs tracking-wider">Value</th></tr></thead>
@@ -454,7 +454,7 @@ export default function Home() {
             </Section>
 
             {/* 19. BHAGYANK */}
-            <Section no={19} title={`BHAGYANK — ${report.bhagyank} (${NUM_DATA[report.bhagyank]?.planet})`} colorClass={SECTION_COLORS[18]}>
+            <Section no={19} title={`BHAGYANK — ${report.bhagyank} (${NUM_DATA[report.bhagyank]?.planet})`} colorClass={SECTION_COLORS[18]} clientName={report.name}>
               <div className={`rounded-xl border p-4 ${PLANET_BG[report.bhagyank]}`}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${PLANET_GRAD[report.bhagyank]} text-foreground flex items-center justify-center font-cinzel font-bold text-2xl shrink-0 animate-pulse-glow`}>{report.bhagyank}</div>
@@ -473,7 +473,7 @@ export default function Home() {
             </Section>
 
             {/* 20. MOOLANK */}
-            <Section no={20} title={`MOOLANK — ${report.moolank} (${NUM_DATA[report.moolank]?.planet})`} colorClass={SECTION_COLORS[19]}>
+            <Section no={20} title={`MOOLANK — ${report.moolank} (${NUM_DATA[report.moolank]?.planet})`} colorClass={SECTION_COLORS[19]} clientName={report.name}>
               <div className={`rounded-xl border p-4 ${PLANET_BG[report.moolank]}`}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${PLANET_GRAD[report.moolank]} text-foreground flex items-center justify-center font-cinzel font-bold text-2xl shrink-0`}>{report.moolank}</div>
@@ -492,7 +492,7 @@ export default function Home() {
             </Section>
 
             {/* 21. CHALDEAN NAME NUMBER */}
-            <Section no={21} title="CHALDEAN NAME NUMBER" colorClass={SECTION_COLORS[20]}>
+            <Section no={21} title="CHALDEAN NAME NUMBER" colorClass={SECTION_COLORS[20]} clientName={report.name}>
               <div className="glass-gold rounded-xl p-4">
                 <div className="grid grid-cols-3 gap-4 text-center mb-4">
                   <div><div className="text-2xl font-cinzel font-bold text-primary">{report.nameData.fullCompound}</div><div className="text-xs text-muted-foreground">Compound</div></div>
@@ -504,7 +504,7 @@ export default function Home() {
             </Section>
 
             {/* 22. NAME ANALYSIS */}
-            <Section no={22} title="NAME ANALYSIS" colorClass={SECTION_COLORS[21]}>
+            <Section no={22} title="NAME ANALYSIS" colorClass={SECTION_COLORS[21]} clientName={report.name}>
               <div className="space-y-3">
                 <div className="glass-gold rounded-xl p-4">
                   <h3 className="text-xs font-bold text-primary mb-2 uppercase tracking-wider">First Name: {report.nameData.firstName}</h3>
@@ -526,7 +526,7 @@ export default function Home() {
             </Section>
 
             {/* 23. MONTH NUMBER */}
-            <Section no={23} title={`MONTH NUMBER — ${report.monthNum}`} colorClass={SECTION_COLORS[22]}>
+            <Section no={23} title={`MONTH NUMBER — ${report.monthNum}`} colorClass={SECTION_COLORS[22]} clientName={report.name}>
               <div className={`rounded-xl border p-4 ${PLANET_BG[report.monthNum]}`}>
                 <div className="flex items-center gap-3 mb-3">
                   <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${PLANET_GRAD[report.monthNum]} text-foreground flex items-center justify-center font-cinzel font-bold text-xl shrink-0`}>{report.monthNum}</div>
@@ -540,7 +540,7 @@ export default function Home() {
             </Section>
 
             {/* 24. BIRTH YEAR NUMBER */}
-            <Section no={24} title={`BIRTH YEAR NUMBER — ${report.yearNum}`} colorClass={SECTION_COLORS[23]}>
+            <Section no={24} title={`BIRTH YEAR NUMBER — ${report.yearNum}`} colorClass={SECTION_COLORS[23]} clientName={report.name}>
               <div className={`rounded-xl border p-4 ${PLANET_BG[report.yearNum]}`}>
                 <div className="flex items-center gap-3 mb-3">
                   <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${PLANET_GRAD[report.yearNum]} text-foreground flex items-center justify-center font-cinzel font-bold text-xl shrink-0`}>{report.yearNum}</div>
@@ -554,7 +554,7 @@ export default function Home() {
             </Section>
 
             {/* 25. WESTERN SIGN */}
-            <Section no={25} title={`SUN SIGN WESTERN — ${report.westernSign}`} colorClass={SECTION_COLORS[24]}>
+            <Section no={25} title={`SUN SIGN WESTERN — ${report.westernSign}`} colorClass={SECTION_COLORS[24]} clientName={report.name}>
               <div className="glass-gold rounded-xl p-4">
                 <div className="font-cinzel text-xl font-bold text-primary mb-3">{report.westernSign}</div>
                 <Bullet items={WEST_SIGN_DATA[report.westernSign]?.desc || []} />
@@ -566,7 +566,7 @@ export default function Home() {
             </Section>
 
             {/* 26. EASTERN SIGN */}
-            <Section no={26} title={`SUN SIGN EASTERN — ${report.easternSign}`} colorClass={SECTION_COLORS[25]}>
+            <Section no={26} title={`SUN SIGN EASTERN — ${report.easternSign}`} colorClass={SECTION_COLORS[25]} clientName={report.name}>
               <div className="glass-gold rounded-xl p-4">
                 <div className="font-cinzel text-xl font-bold text-primary mb-3">{report.easternSign}</div>
                 <Bullet items={EAST_SIGN_DATA[report.easternSign]?.desc || []} />
@@ -578,7 +578,7 @@ export default function Home() {
             </Section>
 
             {/* 27. VASTU GRID */}
-            <Section no={27} title="VASTU GRID" colorClass={SECTION_COLORS[26]}>
+            <Section no={27} title="VASTU GRID" colorClass={SECTION_COLORS[26]} clientName={report.name}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <p className="text-xs font-semibold text-muted-foreground mb-2 text-center font-cinzel tracking-wider">Your Vastu Lo-Shu Grid</p>
@@ -598,7 +598,7 @@ export default function Home() {
             </Section>
 
             {/* 28. VASTU DASHA */}
-            <Section no={28} title="VASTU DASHA AS PER MISSING NUMBER" colorClass={SECTION_COLORS[27]}>
+            <Section no={28} title="VASTU DASHA AS PER MISSING NUMBER" colorClass={SECTION_COLORS[27]} clientName={report.name}>
               {report.grid.missing.length === 0 ? (
                 <div className="p-4 bg-emerald-950/30 rounded-xl border border-emerald-800/40 text-center">
                   <p className="text-emerald-400 font-semibold">No missing numbers! Your Vastu is complete and balanced.</p>
@@ -619,7 +619,7 @@ export default function Home() {
             </Section>
 
             {/* 29. MARRIAGE */}
-            <Section no={29} title="MARRIAGE & RELATIONSHIP" colorClass={SECTION_COLORS[28]}>
+            <Section no={29} title="MARRIAGE & RELATIONSHIP" colorClass={SECTION_COLORS[28]} clientName={report.name}>
               <div className="space-y-4">
                 <div className="glass-gold rounded-xl p-4 pdf-keep-together">
                   <h3 className="font-semibold text-primary mb-2 text-sm font-cinzel">Life Path {report.bhagyank} Analysis</h3>
@@ -638,7 +638,7 @@ export default function Home() {
             </Section>
 
             {/* 30. FINANCE */}
-            <Section no={30} title="FINANCE ANALYSIS" colorClass={SECTION_COLORS[29]}>
+            <Section no={30} title="FINANCE ANALYSIS" colorClass={SECTION_COLORS[29]} clientName={report.name}>
               <div className="space-y-4">
                 <div className="glass-gold rounded-xl p-4 pdf-keep-together">
                   <h3 className="font-semibold text-primary mb-2 text-sm font-cinzel">As Per Life Path {report.bhagyank}</h3>
@@ -652,7 +652,7 @@ export default function Home() {
             </Section>
 
             {/* 31. HEALTH */}
-            <Section no={31} title="HEALTH ANALYSIS" colorClass={SECTION_COLORS[30]}>
+            <Section no={31} title="HEALTH ANALYSIS" colorClass={SECTION_COLORS[30]} clientName={report.name}>
               <div className="space-y-4">
                 <div className="glass-gold rounded-xl p-4 pdf-keep-together">
                   <h3 className="font-semibold text-primary mb-2 text-sm font-cinzel">Bhagyank {report.bhagyank} — {NUM_DATA[report.bhagyank]?.planet}</h3>
@@ -666,7 +666,7 @@ export default function Home() {
             </Section>
 
             {/* 32. PERSONAL YEAR */}
-            <Section no={32} title="PERSONAL YEAR NUMBER" colorClass={SECTION_COLORS[31]}>
+            <Section no={32} title="PERSONAL YEAR NUMBER" colorClass={SECTION_COLORS[31]} clientName={report.name}>
               <p className="text-sm text-muted-foreground mb-4">Each nine-year period marks the beginning and end of a particular stage of development.</p>
               <div className="space-y-3">
                 {report.personalYears.map(py => (
@@ -689,7 +689,7 @@ export default function Home() {
             </Section>
 
             {/* 33. ALL REMEDIES */}
-            <Section no={33} title="ALL REMEDIES" colorClass={SECTION_COLORS[32]}>
+            <Section no={33} title="ALL REMEDIES" colorClass={SECTION_COLORS[32]} clientName={report.name}>
               <div className="space-y-4">
                 <div className="glass-gold rounded-xl p-4">
                   <h3 className="font-semibold text-primary mb-2 text-sm font-cinzel">General Remedies — Moolank {report.moolank}</h3>
