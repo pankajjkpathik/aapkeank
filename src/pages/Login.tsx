@@ -14,12 +14,25 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
+  const [isSignup, setIsSignup] = useState(false);
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
-  async function handleLogin(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setErr("");
+    setSuccess("");
+
+    if (isSignup) {
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) { setErr(error.message); setLoading(false); return; }
+      setSuccess("Account created! Now switch to Login to sign in.");
+      setIsSignup(false);
+      setLoading(false);
+      return;
+    }
+
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       setErr(error.message);
