@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Sparkles, Download, Star, Sun, Moon, Loader2 } from "lucide-react";
+import { Smartphone } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
 import { exportReportPDF } from "@/lib/pdfExport";
@@ -111,12 +113,19 @@ export default function Home() {
             <span className="font-cinzel font-bold text-primary tracking-wider text-sm">Lo Shu Grid</span>
             <span className="text-muted-foreground text-xs hidden sm:block">— Vedic Numerology</span>
           </div>
-          {report && (
+          <div className="flex items-center gap-2">
+            <Link to="/mobile-compatibility">
+              <Button size="sm" variant="ghost" className="gap-1.5 text-muted-foreground hover:text-primary text-xs">
+                <Smartphone className="w-3.5 h-3.5" /> Mobile
+              </Button>
+            </Link>
+            {report && (
             <Button size="sm" variant="outline" onClick={handleExportPDF} disabled={exporting}
               className="gap-1.5 border-primary/30 text-primary hover:bg-primary/10">
               {exporting ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> {exportPct}%</> : <><Download className="w-3.5 h-3.5" /> PDF</>}
             </Button>
-          )}
+            )}
+          </div>
         </div>
       </header>
 
