@@ -12,7 +12,7 @@ import { FullGrid, MiniGrid } from "@/components/Grid";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Sparkles, Download, Star, Sun, Moon, Loader2, Type } from "lucide-react";
+import { Sparkles, Download, Star, Sun, Moon, Loader2, Type, BookOpen, Gem } from "lucide-react";
 import { Smartphone } from "lucide-react";
 import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -128,6 +128,16 @@ export default function Home() {
             <Link to="/name-compatibility">
               <Button size="sm" variant="ghost" className="gap-1.5 text-muted-foreground hover:text-primary text-xs">
                 <Type className="w-3.5 h-3.5" /> Name
+              </Button>
+            </Link>
+            <Link to="/lal-kitab">
+              <Button size="sm" variant="ghost" className="gap-1.5 text-muted-foreground hover:text-primary text-xs">
+                <BookOpen className="w-3.5 h-3.5" /> Lal Kitab
+              </Button>
+            </Link>
+            <Link to="/crystal-gem">
+              <Button size="sm" variant="ghost" className="gap-1.5 text-muted-foreground hover:text-primary text-xs">
+                <Gem className="w-3.5 h-3.5" /> Crystals
               </Button>
             </Link>
             {report && (
