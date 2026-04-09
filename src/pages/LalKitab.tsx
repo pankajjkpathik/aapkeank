@@ -9,6 +9,7 @@ import { Sparkles, Download, ArrowLeft, Loader2, BookOpen, CheckCircle, AlertTri
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
 import { exportReportPDF } from "@/lib/pdfExport";
+import { saveReport } from "@/lib/saveReport";
 import { Link } from "react-router-dom";
 
 const SECTION_COLORS = [
@@ -44,6 +45,7 @@ export default function LalKitabPage() {
       const result = analyzeLalKitab(name.trim() || "Client", dob);
       setErr("");
       setReport(result);
+      saveReport(name.trim() || "Client", "lal_kitab", dob, result);
       setTimeout(() => document.getElementById("lk-rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch { setErr("Failed to analyze. Please check inputs."); }
   }

@@ -9,6 +9,7 @@ import { Sparkles, Download, ArrowLeft, Loader2, CheckCircle, XCircle, AlertTria
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
 import { exportReportPDF } from "@/lib/pdfExport";
+import { saveReport } from "@/lib/saveReport";
 import { Link } from "react-router-dom";
 
 const SECTION_COLORS = [
@@ -47,6 +48,7 @@ export default function NameCompatibilityPage() {
       const result = analyzeNameCompatibility(name.trim(), dob);
       setErr("");
       setReport(result);
+      saveReport(name.trim(), "name", dob, result);
       setTimeout(() => document.getElementById("name-rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch { setErr("Failed to analyze. Please check inputs."); }
   }

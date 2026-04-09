@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
 import { exportReportPDF } from "@/lib/pdfExport";
+import { saveReport } from "@/lib/saveReport";
 
 const PLANET_GRAD: Record<number, string> = {
   1: "from-yellow-500 to-orange-500", 2: "from-slate-400 to-blue-400", 3: "from-yellow-400 to-amber-500",
@@ -87,6 +88,7 @@ export default function Home() {
       const r = generateReport(name || "Your Name", dob, gender);
       if (r.digits.length === 0) { setErr("Could not extract valid digits from this date."); return; }
       setErr(""); setReport(r);
+      saveReport(name || "Your Name", "loshu_grid", dob, r);
       setTimeout(() => document.getElementById("rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch { setErr("Failed to generate report. Please check your date."); }
   }
@@ -108,11 +110,14 @@ export default function Home() {
       <header className="print:hidden border-b border-border/30 glass sticky top-0 z-20">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors text-xs">
+              <Star className="w-3.5 h-3.5" /> Home
+            </Link>
+            <span className="text-border">|</span>
             <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center animate-pulse-glow">
               <Sparkles className="w-4 h-4 text-primary" />
             </div>
             <span className="font-cinzel font-bold text-primary tracking-wider text-sm">Lo Shu Grid</span>
-            <span className="text-muted-foreground text-xs hidden sm:block">— Vedic Numerology</span>
           </div>
           <div className="flex items-center gap-2">
             <Link to="/mobile-compatibility">

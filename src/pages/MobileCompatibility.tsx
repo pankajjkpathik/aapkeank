@@ -10,6 +10,7 @@ import { Sparkles, Download, Smartphone, ArrowLeft, Loader2, AlertTriangle, Chec
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
 import { exportReportPDF } from "@/lib/pdfExport";
+import { saveReport } from "@/lib/saveReport";
 import { Link } from "react-router-dom";
 
 const SECTION_COLORS = [
@@ -49,6 +50,7 @@ export default function MobileCompatibility() {
       const result = analyzeMobileNumber(mobile, dob);
       setErr("");
       setReport(result);
+      saveReport(name || "Client", "mobile", dob, result);
       setTimeout(() => document.getElementById("mobile-rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch { setErr("Failed to analyze. Please check inputs."); }
   }
