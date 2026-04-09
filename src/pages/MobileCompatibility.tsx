@@ -6,7 +6,7 @@ import { Section, Bar, InfoRow, Bullet } from "@/components/ReportSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Sparkles, Download, Smartphone, ArrowLeft, Loader2, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
+import { Sparkles, Download, Smartphone, ArrowLeft, Loader2, AlertTriangle, CheckCircle, XCircle, Type } from "lucide-react";
 import { Heart } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
@@ -81,6 +81,11 @@ export default function MobileCompatibility() {
             <Link to="/marriage-compatibility">
               <Button size="sm" variant="ghost" className="gap-1.5 text-muted-foreground hover:text-primary text-xs">
                 <Heart className="w-3.5 h-3.5" /> Marriage
+              </Button>
+            </Link>
+            <Link to="/name-compatibility">
+              <Button size="sm" variant="ghost" className="gap-1.5 text-muted-foreground hover:text-primary text-xs">
+                <Type className="w-3.5 h-3.5" /> Name
               </Button>
             </Link>
             {report && (
