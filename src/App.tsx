@@ -21,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/mobile-compatibility" element={<MobileCompatibility />} />
           <Route path="/marriage-compatibility" element={<MarriageCompatibility />} />
+          <Route path="/name-compatibility" element={<NameCompatibility />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
