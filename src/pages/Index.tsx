@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Sparkles, Download, Star, Sun, Moon, Loader2 } from "lucide-react";
 import { Smartphone } from "lucide-react";
+import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
@@ -117,6 +118,11 @@ export default function Home() {
             <Link to="/mobile-compatibility">
               <Button size="sm" variant="ghost" className="gap-1.5 text-muted-foreground hover:text-primary text-xs">
                 <Smartphone className="w-3.5 h-3.5" /> Mobile
+              </Button>
+            </Link>
+            <Link to="/marriage-compatibility">
+              <Button size="sm" variant="ghost" className="gap-1.5 text-muted-foreground hover:text-primary text-xs">
+                <Heart className="w-3.5 h-3.5" /> Marriage
               </Button>
             </Link>
             {report && (
