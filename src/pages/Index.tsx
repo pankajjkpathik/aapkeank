@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
 import { exportReportPDF } from "@/lib/pdfExport";
+import { saveReport } from "@/lib/saveReport";
 
 const PLANET_GRAD: Record<number, string> = {
   1: "from-yellow-500 to-orange-500", 2: "from-slate-400 to-blue-400", 3: "from-yellow-400 to-amber-500",
