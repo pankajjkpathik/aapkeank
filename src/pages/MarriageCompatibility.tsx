@@ -61,6 +61,7 @@ export default function MarriageCompatibility() {
       const r = analyzeMarriage(nameA || "Person A", dobA, genderA, nameB || "Person B", dobB, genderB);
       setErr("");
       setReport(r);
+      saveReport(`${nameA || "Person A"} & ${nameB || "Person B"}`, "marriage", `${dobA} / ${dobB}`, r);
       setTimeout(() => document.getElementById("marriage-rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch { setErr("Failed to analyze. Please check inputs."); }
   }

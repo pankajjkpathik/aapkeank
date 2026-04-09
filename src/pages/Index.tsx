@@ -87,6 +87,7 @@ export default function Home() {
       const r = generateReport(name || "Your Name", dob, gender);
       if (r.digits.length === 0) { setErr("Could not extract valid digits from this date."); return; }
       setErr(""); setReport(r);
+      saveReport(name || "Your Name", "loshu_grid", dob, r);
       setTimeout(() => document.getElementById("rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch { setErr("Failed to generate report. Please check your date."); }
   }

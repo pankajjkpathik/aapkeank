@@ -49,6 +49,7 @@ export default function MobileCompatibility() {
       const result = analyzeMobileNumber(mobile, dob);
       setErr("");
       setReport(result);
+      saveReport(name || "Client", "mobile", dob, result);
       setTimeout(() => document.getElementById("mobile-rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch { setErr("Failed to analyze. Please check inputs."); }
   }

@@ -47,6 +47,7 @@ export default function NameCompatibilityPage() {
       const result = analyzeNameCompatibility(name.trim(), dob);
       setErr("");
       setReport(result);
+      saveReport(name.trim(), "name", dob, result);
       setTimeout(() => document.getElementById("name-rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch { setErr("Failed to analyze. Please check inputs."); }
   }

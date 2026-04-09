@@ -44,6 +44,7 @@ export default function LalKitabPage() {
       const result = analyzeLalKitab(name.trim() || "Client", dob);
       setErr("");
       setReport(result);
+      saveReport(name.trim() || "Client", "lal_kitab", dob, result);
       setTimeout(() => document.getElementById("lk-rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch { setErr("Failed to analyze. Please check inputs."); }
   }

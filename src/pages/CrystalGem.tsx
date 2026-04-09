@@ -39,6 +39,7 @@ export default function CrystalGemPage() {
     if (!dob) { setErr("Please enter date of birth."); return; }
     const r = analyzeCrystals(name.trim() || "Client", dob);
     setErr(""); setReport(r);
+    saveReport(name.trim() || "Client", "crystal_gem", dob, r);
     setTimeout(() => document.getElementById("cg-rpt")?.scrollIntoView({ behavior: "smooth" }), 100);
   }
 
