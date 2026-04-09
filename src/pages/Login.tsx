@@ -95,7 +95,14 @@ export default function Login() {
           </form>
         </div>
 
-        <div className="text-center mt-6">
+        <div className="text-center mt-4">
+          <button onClick={() => { setIsSignup(!isSignup); setErr(""); setSuccess(""); }}
+            className="text-primary hover:text-primary/80 text-sm transition-colors underline">
+            {isSignup ? "Already have an account? Login" : "Need an account? Sign Up"}
+          </button>
+        </div>
+
+        <div className="text-center mt-3">
           <Link to="/" className="text-muted-foreground hover:text-primary text-sm inline-flex items-center gap-1.5 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Home
           </Link>
