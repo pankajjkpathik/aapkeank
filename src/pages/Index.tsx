@@ -108,11 +108,14 @@ export default function Home() {
       <header className="print:hidden border-b border-border/30 glass sticky top-0 z-20">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors text-xs">
+              <Star className="w-3.5 h-3.5" /> Home
+            </Link>
+            <span className="text-border">|</span>
             <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center animate-pulse-glow">
               <Sparkles className="w-4 h-4 text-primary" />
             </div>
             <span className="font-cinzel font-bold text-primary tracking-wider text-sm">Lo Shu Grid</span>
-            <span className="text-muted-foreground text-xs hidden sm:block">— Vedic Numerology</span>
           </div>
           <div className="flex items-center gap-2">
             <Link to="/mobile-compatibility">
