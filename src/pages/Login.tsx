@@ -69,12 +69,12 @@ export default function Login() {
       >
         <div className="text-center mb-8">
           <img src={ankLogo} alt="Ank Darppan" className="w-16 h-16 mx-auto rounded-full border-2 border-primary/30 mb-4" />
-          <h1 className="font-cinzel text-2xl font-bold text-gradient-gold">Admin Login</h1>
+          <h1 className="font-cinzel text-2xl font-bold text-gradient-gold">{isSignup ? "Create Account" : "Admin Login"}</h1>
           <p className="text-muted-foreground font-cormorant text-lg mt-1">Ank Darppan Dashboard</p>
         </div>
 
         <div className="glass-gold rounded-2xl p-8">
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <Label className="text-xs font-medium mb-1.5 block text-muted-foreground uppercase tracking-wider">Email</Label>
               <Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="admin@ankdarppan.com"
@@ -86,10 +86,11 @@ export default function Login() {
                 className="bg-muted/30 border-border/50" required />
             </div>
             {err && <p className="text-destructive text-xs text-center">{err}</p>}
+            {success && <p className="text-green-500 text-xs text-center">{success}</p>}
             <Button type="submit" disabled={loading}
               className="w-full gap-2 bg-gradient-to-r from-primary to-amber-600 hover:from-primary/90 hover:to-amber-600/90 font-cinzel tracking-wider">
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Shield className="w-4 h-4" />}
-              {loading ? "Authenticating..." : "Login"}
+              {loading ? "Processing..." : isSignup ? "Sign Up" : "Login"}
             </Button>
           </form>
         </div>
