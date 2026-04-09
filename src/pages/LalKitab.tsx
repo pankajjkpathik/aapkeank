@@ -5,8 +5,7 @@ import { Section, Bar, InfoRow, Bullet } from "@/components/ReportSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Sparkles, Download, ArrowLeft, Loader2, BookOpen, CheckCircle, AlertTriangle, XCircle } from "lucide-react";
-import { Smartphone, Heart, Type } from "lucide-react";
+import { Sparkles, Download, ArrowLeft, Loader2, BookOpen, CheckCircle, AlertTriangle, XCircle, Smartphone, Heart, Type, Gem } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import ankLogo from "@/assets/ank-darppan-logo.png";
 import { exportReportPDF } from "@/lib/pdfExport";
@@ -86,6 +85,7 @@ export default function LalKitabPage() {
             <Link to="/mobile-compatibility"><Button size="sm" variant="ghost" className="gap-1 text-muted-foreground hover:text-primary text-xs"><Smartphone className="w-3.5 h-3.5" /> Mobile</Button></Link>
             <Link to="/marriage-compatibility"><Button size="sm" variant="ghost" className="gap-1 text-muted-foreground hover:text-primary text-xs"><Heart className="w-3.5 h-3.5" /> Marriage</Button></Link>
             <Link to="/name-compatibility"><Button size="sm" variant="ghost" className="gap-1 text-muted-foreground hover:text-primary text-xs"><Type className="w-3.5 h-3.5" /> Name</Button></Link>
+            <Link to="/crystal-gem"><Button size="sm" variant="ghost" className="gap-1 text-muted-foreground hover:text-primary text-xs"><Gem className="w-3.5 h-3.5" /> Crystals</Button></Link>
             {report && (
               <Button size="sm" variant="outline" onClick={handleExportPDF} disabled={exporting}
                 className="gap-1.5 border-primary/30 text-primary hover:bg-primary/10">
