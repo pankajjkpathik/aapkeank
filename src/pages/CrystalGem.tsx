@@ -60,8 +60,10 @@ export default function CrystalGemPage() {
             <span className="font-cinzel font-bold text-primary tracking-wider text-sm">Crystals & Gems</span>
           </div>
           <div className="flex items-center gap-2">
-            <Link to="/lal-kitab"><Button size="sm" variant="ghost" className="gap-1 text-muted-foreground hover:text-primary text-xs"><BookOpen className="w-3.5 h-3.5" /> Lal Kitab</Button></Link>
+            <Link to="/mobile-compatibility"><Button size="sm" variant="ghost" className="gap-1 text-muted-foreground hover:text-primary text-xs"><Smartphone className="w-3.5 h-3.5" /> Mobile</Button></Link>
+            <Link to="/marriage-compatibility"><Button size="sm" variant="ghost" className="gap-1 text-muted-foreground hover:text-primary text-xs"><Heart className="w-3.5 h-3.5" /> Marriage</Button></Link>
             <Link to="/name-compatibility"><Button size="sm" variant="ghost" className="gap-1 text-muted-foreground hover:text-primary text-xs"><Type className="w-3.5 h-3.5" /> Name</Button></Link>
+            <Link to="/lal-kitab"><Button size="sm" variant="ghost" className="gap-1 text-muted-foreground hover:text-primary text-xs"><BookOpen className="w-3.5 h-3.5" /> Lal Kitab</Button></Link>
             {report && (
               <Button size="sm" variant="outline" onClick={handleExportPDF} disabled={exporting} className="gap-1.5 border-primary/30 text-primary hover:bg-primary/10">
                 {exporting ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> {exportPct}%</> : <><Download className="w-3.5 h-3.5" /> PDF</>}
